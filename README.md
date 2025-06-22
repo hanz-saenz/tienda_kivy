@@ -99,6 +99,3 @@ Para empaquetar la aplicación para Android:
 
 ## Contribuciones
 Si deseas contribuir, crea un *pull request* con tus cambios. Asegúrate de incluir pruebas para cualquier nueva funcionalidad.
-
-## Licencia
-MIT License. Consulta el archivo `LICENSE` para más detalles (si se incluye).
