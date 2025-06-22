@@ -1,0 +1,643 @@
+#:kivy 2.0.0
+#:import FadeTransition kivy.uix.screenmanager.FadeTransition
+#:import dp kivy.metrics.dp
+#:import sp kivy.metrics.sp
+
+<ScreenManager>:
+    transition: FadeTransition()
+
+<LoginScreen>:
+    canvas.before:
+        Color:
+            rgba: 0.11, 0.14, 0.15, 1  # Negro (#1C2526)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(20)
+        spacing: dp(20)
+        size_hint: 0.6, 0.8
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        canvas.before:
+            Color:
+                rgba: 0.18, 0.18, 0.18, 1  # Gris oscuro (#2E2E2E)
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius: [dp(20)]
+        Label:
+            text: "Iniciar Sesión"
+            font_name: "Roboto"
+            font_size: sp(24)
+            color: 1, 1, 1, 1  # Blanco
+            size_hint_y: None
+            height: dp(50)
+        Label:
+            text: "Email:"
+            font_name: "Roboto"
+            font_size: sp(16)
+            color: 0.75, 0.75, 0.75, 1  # Plata (#C0C0C0)
+            size_hint_y: None
+            height: dp(30)
+        TextInput:
+            id: email
+            multiline: False
+            font_name: "Roboto"
+            font_size: sp(14)
+            background_color: 0.18, 0.18, 0.18, 1
+            foreground_color: 1, 1, 1, 1
+            cursor_color: 0.83, 0.63, 0.09, 1  # Dorado
+            size_hint: 1, None
+            height: dp(40)
+            padding: [dp(10), dp(10)]
+        Label:
+            text: "Contraseña:"
+            font_name: "Roboto"
+            font_size: sp(16)
+            color: 0.75, 0.75, 0.75, 1
+            size_hint_y: None
+            height: dp(30)
+        TextInput:
+            id: password
+            multiline: False
+            password: True
+            font_name: "Roboto"
+            font_size: sp(14)
+            background_color: 0.18, 0.18, 0.18, 1
+            foreground_color: 1, 1, 1, 1
+            cursor_color: 0.83, 0.63, 0.09, 1
+            size_hint: 1, None
+            height: dp(40)
+            padding: [dp(10), dp(10)]
+        Button:
+            text: "Iniciar Sesión"
+            font_name: "Roboto"
+            font_size: sp(16)
+            background_color: 0.83, 0.63, 0.09, 1  # Dorado
+            color: 0.11, 0.14, 0.15, 1  # Negro
+            size_hint: 1, None
+            height: dp(50)
+            canvas.before:
+                Color:
+                    rgba: 0.75, 0.75, 0.75, 0.3  # Sombra plateada
+                Rectangle:
+                    pos: self.x, self.y - dp(5)
+                    size: self.size
+            on_press: root.handle_login(email.text, password.text)
+        Button:
+            text: "Ir a Registro"
+            font_name: "Roboto"
+            font_size: sp(16)
+            background_color: 0.18, 0.18, 0.18, 1
+            color: 0.75, 0.75, 0.75, 1
+            size_hint: 1, None
+            height: dp(50)
+            on_press: app.root.current = 'register'
+
+<RegisterScreen>:
+    canvas.before:
+        Color:
+            rgba: 0.11, 0.14, 0.15, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(20)
+        spacing: dp(20)
+        size_hint: 0.6, 0.8
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        canvas.before:
+            Color:
+                rgba: 0.18, 0.18, 0.18, 1
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius: [dp(20)]
+        Label:
+            text: "Registrarse"
+            font_name: "Roboto"
+            font_size: sp(24)
+            color: 1, 1, 1, 1
+            size_hint_y: None
+            height: dp(50)
+        Label:
+            text: "Nombre de usuario:"
+            font_name: "Roboto"
+            font_size: sp(16)
+            color: 0.75, 0.75, 0.75, 1
+            size_hint_y: None
+            height: dp(30)
+        TextInput:
+            id: username
+            multiline: False
+            font_name: "Roboto"
+            font_size: sp(14)
+            background_color: 0.18, 0.18, 0.18, 1
+            foreground_color: 1, 1, 1, 1
+            cursor_color: 0.83, 0.63, 0.09, 1
+            size_hint: 1, None
+            height: dp(40)
+            padding: [dp(10), dp(10)]
+        Label:
+            text: "Email:"
+            font_name: "Roboto"
+            font_size: sp(16)
+            color: 0.75, 0.75, 0.75, 1
+            size_hint_y: None
+            height: dp(30)
+        TextInput:
+            id: email
+            multiline: False
+            font_name: "Roboto"
+            font_size: sp(14)
+            background_color: 0.18, 0.18, 0.18, 1
+            foreground_color: 1, 1, 1, 1
+            cursor_color: 0.83, 0.63, 0.09, 1
+            size_hint: 1, None
+            height: dp(40)
+            padding: [dp(10), dp(10)]
+        Label:
+            text: "Contraseña:"
+            font_name: "Roboto"
+            font_size: sp(16)
+            color: 0.75, 0.75, 0.75, 1
+            size_hint_y: None
+            height: dp(30)
+        TextInput:
+            id: password
+            multiline: False
+            password: True
+            font_name: "Roboto"
+            font_size: sp(14)
+            background_color: 0.18, 0.18, 0.18, 1
+            foreground_color: 1, 1, 1, 1
+            cursor_color: 0.83, 0.63, 0.09, 1
+            size_hint: 1, None
+            height: dp(40)
+            padding: [dp(10), dp(10)]
+        Button:
+            text: "Registrarse"
+            font_name: "Roboto"
+            font_size: sp(16)
+            background_color: 0.83, 0.63, 0.09, 1
+            color: 0.11, 0.14, 0.15, 1
+            size_hint: 1, None
+            height: dp(50)
+            canvas.before:
+                Color:
+                    rgba: 0.75, 0.75, 0.75, 0.3
+                Rectangle:
+                    pos: self.x, self.y - dp(5)
+                    size: self.size
+            on_press: root.handle_register(username.text, email.text, password.text)
+        Button:
+            text: "Volver a Login"
+            font_name: "Roboto"
+            font_size: sp(16)
+            background_color: 0.18, 0.18, 0.18, 1
+            color: 0.75, 0.75, 0.75, 1
+            size_hint: 1, None
+            height: dp(50)
+            on_press: app.root.current = 'login'
+
+<MainScreen>:
+    canvas.before:
+        Color:
+            rgba: 0.11, 0.14, 0.15, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(20)
+        spacing: dp(20)
+        size_hint: 0.6, 0.8
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        canvas.before:
+            Color:
+                rgba: 0.18, 0.18, 0.18, 1
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius: [dp(20)]
+        Label:
+            text: f"Bienvenido, {root.current_user}"
+            font_name: "Roboto"
+            font_size: sp(24)
+            color: 1, 1, 1, 1
+            size_hint_y: None
+            height: dp(50)
+        Button:
+            text: "Gestionar Categorías"
+            font_name: "Roboto"
+            font_size: sp(16)
+            background_color: 0.83, 0.63, 0.09, 1
+            color: 0.11, 0.14, 0.15, 1
+            size_hint: 1, None
+            height: dp(50)
+            canvas.before:
+                Color:
+                    rgba: 0.75, 0.75, 0.75, 0.3
+                Rectangle:
+                    pos: self.x, self.y - dp(5)
+                    size: self.size
+            on_press: app.root.current = 'categories'
+        Button:
+            text: "Gestionar Marcas"
+            font_name: "Roboto"
+            font_size: sp(16)
+            background_color: 0.83, 0.63, 0.09, 1
+            color: 0.11, 0.14, 0.15, 1
+            size_hint: 1, None
+            height: dp(50)
+            canvas.before:
+                Color:
+                    rgba: 0.75, 0.75, 0.75, 0.3
+                Rectangle:
+                    pos: self.x, self.y - dp(5)
+                    size: self.size
+            on_press: app.root.current = 'brands'
+        Button:
+            text: "Gestionar Productos"
+            font_name: "Roboto"
+            font_size: sp(16)
+            background_color: 0.83, 0.63, 0.09, 1
+            color: 0.11, 0.14, 0.15, 1
+            size_hint: 1, None
+            height: dp(50)
+            canvas.before:
+                Color:
+                    rgba: 0.75, 0.75, 0.75, 0.3
+                Rectangle:
+                    pos: self.x, self.y - dp(5)
+                    size: self.size
+            on_press: app.root.current = 'products'
+        Button:
+            text: "Cerrar Sesión"
+            font_name: "Roboto"
+            font_size: sp(16)
+            background_color: 0.18, 0.18, 0.18, 1
+            color: 0.75, 0.75, 0.75, 1
+            size_hint: 1, None
+            height: dp(50)
+            on_press: app.root.current = 'login'
+
+<CategoryScreen>:
+    canvas.before:
+        Color:
+            rgba: 0.11, 0.14, 0.15, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(20)
+        spacing: dp(20)
+        size_hint: 0.6, 0.8
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        canvas.before:
+            Color:
+                rgba: 0.18, 0.18, 0.18, 1
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius: [dp(20)]
+        Label:
+            text: "Gestión de Categorías"
+            font_name: "Roboto"
+            font_size: sp(24)
+            color: 1, 1, 1, 1
+            size_hint_y: None
+            height: dp(50)
+        Label:
+            text: "Nombre de la categoría:"
+            font_name: "Roboto"
+            font_size: sp(16)
+            color: 0.75, 0.75, 0.75, 1
+            size_hint_y: None
+            height: dp(30)
+        TextInput:
+            id: category_name
+            multiline: False
+            font_name: "Roboto"
+            font_size: sp(14)
+            background_color: 0.18, 0.18, 0.18, 1
+            foreground_color: 1, 1, 1, 1
+            cursor_color: 0.83, 0.63, 0.09, 1
+            size_hint: 1, None
+            height: dp(40)
+            padding: [dp(10), dp(10)]
+        Button:
+            text: "Agregar Categoría"
+            font_name: "Roboto"
+            font_size: sp(16)
+            background_color: 0.83, 0.63, 0.09, 1
+            color: 0.11, 0.14, 0.15, 1
+            size_hint: 1, None
+            height: dp(50)
+            canvas.before:
+                Color:
+                    rgba: 0.75, 0.75, 0.75, 0.3
+                Rectangle:
+                    pos: self.x, self.y - dp(5)
+                    size: self.size
+            on_press: root.add_category(category_name.text)
+        Label:
+            text: "Categorías existentes:"
+            font_name: "Roboto"
+            font_size: sp(16)
+            color: 0.75, 0.75, 0.75, 1
+            size_hint_y: None
+            height: dp(30)
+        RecycleView:
+            id: category_list
+            viewclass: 'Label'
+            RecycleBoxLayout:
+                default_size: None, dp(56)
+                default_size_hint: 1, None
+                size_hint_y: None
+                height: self.minimum_height
+                orientation: 'vertical'
+                padding: dp(10)
+                spacing: dp(5)
+        Button:
+            text: "Volver"
+            font_name: "Roboto"
+            font_size: sp(16)
+            background_color: 0.18, 0.18, 0.18, 1
+            color: 0.75, 0.75, 0.75, 1
+            size_hint: 1, None
+            height: dp(50)
+            on_press: app.root.current = 'main'
+
+<BrandScreen>:
+    canvas.before:
+        Color:
+            rgba: 0.11, 0.14, 0.15, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(20)
+        spacing: dp(20)
+        size_hint: 0.6, 0.8
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        canvas.before:
+            Color:
+                rgba: 0.18, 0.18, 0.18, 1
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius: [dp(20)]
+        Label:
+            text: "Gestión de Marcas"
+            font_name: "Roboto"
+            font_size: sp(24)
+            color: 1, 1, 1, 1
+            size_hint_y: None
+            height: dp(50)
+        Label:
+            text: "Nombre de la marca:"
+            font_name: "Roboto"
+            font_size: sp(16)
+            color: 0.75, 0.75, 0.75, 1
+            size_hint_y: None
+            height: dp(30)
+        TextInput:
+            id: brand_name
+            multiline: False
+            font_name: "Roboto"
+            font_size: sp(14)
+            background_color: 0.18, 0.18, 0.18, 1
+            foreground_color: 1, 1, 1, 1
+            cursor_color: 0.83, 0.63, 0.09, 1
+            size_hint: 1, None
+            height: dp(40)
+            padding: [dp(10), dp(10)]
+        Button:
+            text: "Agregar Marca"
+            font_name: "Roboto"
+            font_size: sp(16)
+            background_color: 0.83, 0.63, 0.09, 1
+            color: 0.11, 0.14, 0.15, 1
+            size_hint: 1, None
+            height: dp(50)
+            canvas.before:
+                Color:
+                    rgba: 0.75, 0.75, 0.75, 0.3
+                Rectangle:
+                    pos: self.x, self.y - dp(5)
+                    size: self.size
+            on_press: root.add_brand(brand_name.text)
+        Label:
+            text: "Marcas existentes:"
+            font_name: "Roboto"
+            font_size: sp(16)
+            color: 0.75, 0.75, 0.75, 1
+            size_hint_y: None
+            height: dp(30)
+        RecycleView:
+            id: brand_list
+            viewclass: 'Label'
+            RecycleBoxLayout:
+                default_size: None, dp(56)
+                default_size_hint: 1, None
+                size_hint_y: None
+                height: self.minimum_height
+                orientation: 'vertical'
+                padding: dp(10)
+                spacing: dp(5)
+        Button:
+            text: "Volver"
+            font_name: "Roboto"
+            font_size: sp(16)
+            background_color: 0.18, 0.18, 0.18, 1
+            color: 0.75, 0.75, 0.75, 1
+            size_hint: 1, None
+            height: dp(50)
+            on_press: app.root.current = 'main'
+
+<ProductScreen>:
+    canvas.before:
+        Color:
+            rgba: 0.11, 0.14, 0.15, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(20)
+        spacing: dp(20)
+        size_hint: 0.8, 0.9
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        canvas.before:
+            Color:
+                rgba: 0.18, 0.18, 0.18, 1
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius: [dp(20)]
+        Label:
+            text: "Gestión de Productos"
+            font_name: "Roboto"
+            font_size: sp(24)
+            color: 1, 1, 1, 1
+            size_hint_y: None
+            height: dp(50)
+        GridLayout:
+            cols: 2
+            spacing: dp(10)
+            size_hint_y: None
+            height: dp(200)
+            Label:
+                text: "Nombre del producto:"
+                font_name: "Roboto"
+                font_size: sp(16)
+                color: 0.75, 0.75, 0.75, 1
+                size_hint_y: None
+                height: dp(30)
+            TextInput:
+                id: product_name
+                multiline: False
+                font_name: "Roboto"
+                font_size: sp(14)
+                background_color: 0.18, 0.18, 0.18, 1
+                foreground_color: 1, 1, 1, 1
+                cursor_color: 0.83, 0.63, 0.09, 1
+                size_hint: 1, None
+                height: dp(40)
+                padding: [dp(10), dp(10)]
+            Label:
+                text: "Categoría:"
+                font_name: "Roboto"
+                font_size: sp(16)
+                color: 0.75, 0.75, 0.75, 1
+                size_hint_y: None
+                height: dp(30)
+            Spinner:
+                id: category_choice
+                font_name: "Roboto"
+                font_size: sp(14)
+                background_color: 0.18, 0.18, 0.18, 1
+                color: 1, 1, 1, 1
+                values: root.get_category_names()
+                size_hint: 1, None
+                height: dp(40)
+            Label:
+                text: "Marca:"
+                font_name: "Roboto"
+                font_size: sp(16)
+                color: 0.75, 0.75, 0.75, 1
+                size_hint_y: None
+                height: dp(30)
+            Spinner:
+                id: brand_choice
+                font_name: "Roboto"
+                font_size: sp(14)
+                background_color: 0.18, 0.18, 0.18, 1
+                color: 1, 1, 1, 1
+                values: root.get_brand_names()
+                size_hint: 1, None
+                height: dp(40)
+            Label:
+                text: "Foto:"
+                font_name: "Roboto"
+                font_size: sp(16)
+                color: 0.75, 0.75, 0.75, 1
+                size_hint_y: None
+                height: dp(30)
+            BoxLayout:
+                spacing: dp(10)
+                Button:
+                    text: "Seleccionar Foto"
+                    font_name: "Roboto"
+                    font_size: sp(14)
+                    background_color: 0.83, 0.63, 0.09, 1
+                    color: 0.11, 0.14, 0.15, 1
+                    size_hint: 0.5, None
+                    height: dp(40)
+                    canvas.before:
+                        Color:
+                            rgba: 0.75, 0.75, 0.75, 0.3
+                        Rectangle:
+                            pos: self.x, self.y - dp(5)
+                            size: self.size
+                    on_press: root.select_photo()
+                Label:
+                    id: photo_label
+                    text: "No seleccionada"
+                    font_name: "Roboto"
+                    font_size: sp(14)
+                    color: 0.75, 0.75, 0.75, 1
+                    size_hint: 0.5, None
+                    height: dp(40)
+        Button:
+            text: "Agregar Producto"
+            font_name: "Roboto"
+            font_size: sp(16)
+            background_color: 0.83, 0.63, 0.09, 1
+            color: 0.11, 0.14, 0.15, 1
+            size_hint: 1, None
+            height: dp(50)
+            canvas.before:
+                Color:
+                    rgba: 0.75, 0.75, 0.75, 0.3
+                Rectangle:
+                    pos: self.x, self.y - dp(5)
+                    size: self.size
+            on_press: root.add_product(product_name.text, category_choice.text, brand_choice.text)
+        Label:
+            text: "Productos existentes:"
+            font_name: "Roboto"
+            font_size: sp(16)
+            color: 0.75, 0.75, 0.75, 1
+            size_hint_y: None
+            height: dp(30)
+        BoxLayout:
+            spacing: dp(10)
+            RecycleView:
+                id: product_list
+                viewclass: 'SelectableLabel'
+                RecycleBoxLayout:
+                    default_size: None, dp(56)
+                    default_size_hint: 1, None
+                    size_hint_y: None
+                    height: self.minimum_height
+                    orientation: 'vertical'
+                    padding: dp(10)
+                    spacing: dp(5)
+            Image:
+                id: product_image
+                source: ''
+                size_hint: None, None
+                size: dp(150), dp(150)
+                canvas.before:
+                    Color:
+                        rgba: 0.75, 0.75, 0.75, 1  # Borde plateado
+                    Line:
+                        rectangle: self.x, self.y, self.width, self.height
+                        width: dp(2)
+        Button:
+            text: "Volver"
+            font_name: "Roboto"
+            font_size: sp(16)
+            background_color: 0.18, 0.18, 0.18, 1
+            color: 0.75, 0.75, 0.75, 1
+            size_hint: 1, None
+            height: dp(50)
+            on_press: app.root.current = 'main'
+
+<SelectableLabel@Label>:
+    font_name: "Roboto"
+    font_size: sp(14)
+    color: 1, 1, 1, 1
+    canvas.before:
+        Color:
+            rgba: (0.83, 0.63, 0.09, 0.3) if self.selected else (0, 0, 0, 0)  # Dorado para selección
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    selected: False
